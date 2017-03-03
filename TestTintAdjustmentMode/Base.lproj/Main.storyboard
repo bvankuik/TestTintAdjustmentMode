@@ -22,20 +22,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gRh-Ax-Bfv">
-                                <rect key="frame" x="113" y="601" width="148" height="58"/>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pvx-9R-fFI">
+                                <rect key="frame" x="310" y="72" width="51" height="31"/>
+                                <connections>
+                                    <action selector="switchValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="UMF-27-ckK"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable dimming" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2IN-3E-ZpP">
+                                <rect key="frame" x="180" y="77" width="122" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cGi-8H-Nvp">
+                                <rect key="frame" x="113.5" y="589" width="148" height="58"/>
                                 <state key="normal" title="Button" image="buttonimage"/>
                                 <connections>
-                                    <segue destination="Lpa-xz-afD" kind="popoverPresentation" popoverAnchorView="gRh-Ax-Bfv" id="jKi-jP-4hJ">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Elx-vl-ga9">
-                                <rect key="frame" x="16" y="72" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="Lpa-xz-afD" kind="popoverPresentation" popoverAnchorView="Elx-vl-ga9" id="bnI-A9-7t8">
+                                    <segue destination="Lpa-xz-afD" kind="popoverPresentation" popoverAnchorView="cGi-8H-Nvp" id="L7k-6o-j2O">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                     </segue>
                                 </connections>
@@ -43,14 +46,16 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Elx-vl-ga9" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="Yqu-Dm-EXX"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gRh-Ax-Bfv" secondAttribute="bottom" constant="8" id="aGN-Rr-uiZ"/>
-                            <constraint firstItem="Elx-vl-ga9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="axk-Q2-fcS"/>
-                            <constraint firstItem="gRh-Ax-Bfv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wUR-4l-Irk"/>
+                            <constraint firstItem="Pvx-9R-fFI" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="LPB-YN-z5a"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="cGi-8H-Nvp" secondAttribute="bottom" constant="20" id="R45-8R-9Ya"/>
+                            <constraint firstItem="cGi-8H-Nvp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YVz-oy-MjM"/>
+                            <constraint firstItem="Pvx-9R-fFI" firstAttribute="leading" secondItem="2IN-3E-ZpP" secondAttribute="trailing" constant="8" id="eTx-D4-WwQ"/>
+                            <constraint firstItem="Pvx-9R-fFI" firstAttribute="centerY" secondItem="2IN-3E-ZpP" secondAttribute="centerY" id="uhy-Tn-U2A"/>
+                            <constraint firstItem="Pvx-9R-fFI" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="w51-a6-7Yx"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Test Controller" id="hH2-Pd-EQ8">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="PwY-VU-n9h">
+                        <barButtonItem key="rightBarButtonItem" title="Popover" id="PwY-VU-n9h">
                             <connections>
                                 <segue destination="Lpa-xz-afD" kind="popoverPresentation" popoverAnchorBarButtonItem="PwY-VU-n9h" id="Vyw-y0-Dpd">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
@@ -58,10 +63,13 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="button" destination="cGi-8H-Nvp" id="ynN-xH-No4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="974" y="37"/>
+            <point key="canvasLocation" x="973.60000000000002" y="36.431784107946029"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="uNM-Vt-GOa">
@@ -104,6 +112,6 @@
         <image name="buttonimage" width="94" height="58"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jKi-jP-4hJ"/>
+        <segue reference="Vyw-y0-Dpd"/>
     </inferredMetricsTieBreakers>
 </document>

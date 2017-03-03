@@ -9,10 +9,23 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    @IBOutlet weak var button: UIButton!
+    private let buttonImage: UIImage = #imageLiteral(resourceName: "buttonimage")
 
+    @IBAction func switchValueChanged(_ sender: UISwitch) {
+        let image: UIImage!
+        if sender.isOn {
+            image = buttonImage.withRenderingMode(.alwaysTemplate)
+        } else {
+            image = buttonImage.withRenderingMode(.automatic)
+        }
+        self.button.setImage(image, for: .normal)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        self.button.setImage(buttonImage.withRenderingMode(.alwaysTemplate), for: .normal)
     }
 
 }
